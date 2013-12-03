@@ -4,18 +4,9 @@ using MonoTouch.Security;
 using System.IO;
 using MonoTouch.UIKit;
 
-namespace iOSTest
+namespace iOSPasswordStorage
 {
-	public class Application
-	{
-		static void Main ( string[] args )
-		{
-			UIApplication.Main ( args );
-		}
-	}
-
-	// The name AppDelegate is referenced in the MainWindow.xib file.
-	public partial class AppDelegate : UIApplicationDelegate
+	public static class KeychainHelpers
 	{
 		/// <summary>
 		/// Deletes a username/password record.
@@ -126,16 +117,6 @@ namespace iOSTest
 			
 			// Something went wrong.
 			return null;
-		}
-
-		// This method is invoked when the application has loaded its UI and its ready to run
-		public override bool FinishedLaunching ( UIApplication app, NSDictionary options )
-		{
-			Console.WriteLine ( "Result of setting password: " + SetPasswordForUsername ( "hallo@test.com", "my password", "myService" ) );
-			Console.WriteLine ( "Result of reading password: " + GetPasswordForUsername ( "hallo@test.com", "myService" ) );
-			Console.WriteLine ( "Result of deletion: " + DeletePasswordForUsername ( "hallo@test.com", "myService" ) );
-
-			return true;
 		}
 	}
 }
